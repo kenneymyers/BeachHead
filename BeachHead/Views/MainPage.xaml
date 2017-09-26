@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:local="clr-namespace:BeachHead"
+    x:Class="BeachHead.Views.MainPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+    
+    
+    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+        <StackLayout.Margin>
+            <OnPlatform x:TypeArguments="Thickness" Android="0,0,0,0" WinPhone="0,0,0,0" iOS="0,30,0,0" />
+        </StackLayout.Margin>
+        <Button WidthRequest="100" BackgroundColor="Silver" TextColor="Black" Text="Back" Command="{Binding GoBackCommand}" />
+        <Button WidthRequest="100" BackgroundColor="Silver" TextColor="Black" Text="Refresh" Command="{Binding RefreshCommand}" />
+        <Button WidthRequest="100" BackgroundColor="Silver" TextColor="Black" Text="Eval JS" Command="{Binding EvalJS}" />
+    </StackLayout>
+        <local:WebViewer Source="https://thefrontrow.media" Grid.Row="1"
+                         EvaluateJavascript="{Binding EvaluateJavascript}, Mode=OneWayToSource}"
+                         GoBack="{Binding GoBack, Mode=OneWayToSource}"
+                         Refresh="{Binding Refresh, Mode=OneWayToSource}"/>
+    </Grid>
+</ContentPage>
